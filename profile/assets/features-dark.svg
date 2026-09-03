@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="352" viewBox="0 0 1200 352" role="img" aria-label="Learning days, adaptive tutor, Markdown Lab Studio, consent-aware telemetry">
+  <style>
+    .t { font-family: Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 27px; font-weight: 700; fill: #E6EDF3; }
+    .b { font-family: Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 19px; font-weight: 400; fill: #9198A1; }
+    .card { fill: #0D1117; stroke: #30363D; stroke-width: 1.5; }
+  </style>
+
+  <g>
+    <!-- 1: learning days -->
+    <rect class="card" x="6" y="6" width="580" height="158" rx="10"/>
+    <rect x="34" y="34" width="46" height="46" rx="10" fill="#1F63A8"/>
+    <g fill="#FFFFFF">
+      <rect x="45" y="46" width="24" height="4" rx="2"/>
+      <rect x="45" y="55" width="24" height="4" rx="2"/>
+      <rect x="45" y="64" width="15" height="4" rx="2"/>
+    </g>
+    <text class="t" x="98" y="60">Learning days</text>
+    <text class="b" x="34" y="112">Content is published one learning day at a time —</text>
+    <text class="b" x="34" y="138">students open a day, never a course dump.</text>
+
+    <!-- 2: adaptive tutor -->
+    <rect class="card" x="614" y="6" width="580" height="158" rx="10"/>
+    <rect x="642" y="34" width="46" height="46" rx="10" fill="#1F63A8"/>
+    <g fill="#FFFFFF">
+      <rect x="653" y="60" width="6" height="10" rx="2"/>
+      <rect x="662" y="52" width="6" height="18" rx="2"/>
+      <rect x="671" y="44" width="6" height="26" rx="2"/>
+    </g>
+    <text class="t" x="706" y="60">Adaptive tutor</text>
+    <text class="b" x="642" y="112">Tutor behaviour follows knowledge-component</text>
+    <text class="b" x="642" y="138">mastery and the student's frustration state.</text>
+
+    <!-- 3: lab studio -->
+    <rect class="card" x="6" y="188" width="580" height="158" rx="10"/>
+    <rect x="34" y="216" width="46" height="46" rx="10" fill="#D8434A"/>
+    <g fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M52 230 L44 239 L52 248"/>
+      <path d="M62 230 L70 239 L62 248"/>
+    </g>
+    <text class="t" x="98" y="242">Markdown Lab Studio</text>
+    <text class="b" x="34" y="294">Instructors author labs in Markdown and publish</text>
+    <text class="b" x="34" y="320">to a canonical course day, not a display code.</text>
+
+    <!-- 4: telemetry -->
+    <rect class="card" x="614" y="188" width="580" height="158" rx="10"/>
+    <rect x="642" y="216" width="46" height="46" rx="10" fill="#D8434A"/>
+    <g fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M665 227 L676 232 V241 C676 247 671 251 665 253 C659 251 654 247 654 241 V232 Z"/>
+    </g>
+    <text class="t" x="706" y="242">Consent-aware telemetry</text>
+    <text class="b" x="642" y="294">One behavioural signal never becomes a claim</text>
+    <text class="b" x="642" y="320">about a student.</text>
+  </g>
+</svg>

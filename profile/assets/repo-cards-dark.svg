@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="352" viewBox="0 0 1200 352" role="img" aria-label="vlearn-frontend, vlearn-backend, vlearn-bugbee and vlearn-quality repositories">
+  <style>
+    .n { font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace; font-size: 25px; font-weight: 600; fill: #6CB6FF; }
+    .r { font-family: Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 19px; font-weight: 400; fill: #9198A1; }
+    .l { font-family: Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 17px; font-weight: 400; fill: #9198A1; }
+    .p { font-family: Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 600; fill: #9198A1; letter-spacing: .6px; }
+    .card { fill: #0D1117; stroke: #30363D; stroke-width: 1.5; }
+    .pill { fill: none; stroke: #30363D; stroke-width: 1.5; }
+  </style>
+
+  <!-- vlearn-frontend -->
+  <rect class="card" x="6" y="6" width="580" height="158" rx="10"/>
+  <text class="n" x="34" y="52">vlearn-frontend</text>
+  <rect class="pill" x="452" y="30" width="106" height="28" rx="14"/>
+  <text class="p" x="472" y="49">PRIVATE</text>
+  <text class="r" x="34" y="92">Next.js web app and the same-origin BFF proxy.</text>
+  <circle cx="42" cy="126" r="8" fill="#3178C6"/>
+  <text class="l" x="58" y="132">TypeScript · React 19 · Next.js 16</text>
+
+  <!-- vlearn-backend -->
+  <rect class="card" x="614" y="6" width="580" height="158" rx="10"/>
+  <text class="n" x="642" y="52">vlearn-backend</text>
+  <rect class="pill" x="1060" y="30" width="106" height="28" rx="14"/>
+  <text class="p" x="1080" y="49">PRIVATE</text>
+  <text class="r" x="642" y="92">FastAPI service and the product specification.</text>
+  <circle cx="650" cy="126" r="8" fill="#3572A5"/>
+  <text class="l" x="666" y="132">Python 3.12 · FastAPI · PostgreSQL</text>
+
+  <!-- vlearn-bugbee -->
+  <rect class="card" x="6" y="188" width="580" height="158" rx="10"/>
+  <text class="n" x="34" y="234">vlearn-bugbee</text>
+  <rect class="pill" x="452" y="212" width="106" height="28" rx="14"/>
+  <text class="p" x="472" y="231">PRIVATE</text>
+  <text class="r" x="34" y="274">Discord and web intake — the only bug channel.</text>
+  <circle cx="42" cy="308" r="8" fill="#3572A5"/>
+  <text class="l" x="58" y="314">Python · Discord · PostgreSQL</text>
+
+  <!-- vlearn-quality -->
+  <rect class="card" x="614" y="188" width="580" height="158" rx="10"/>
+  <text class="n" x="642" y="234">vlearn-quality</text>
+  <rect class="pill" x="1060" y="212" width="106" height="28" rx="14"/>
+  <text class="p" x="1080" y="231">PRIVATE</text>
+  <text class="r" x="642" y="274">vlq — one quality gate across every repository.</text>
+  <circle cx="650" cy="308" r="8" fill="#3572A5"/>
+  <text class="l" x="666" y="314">Python · skipped counts as failed</text>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="260" viewBox="0 0 1200 260" role="img" aria-label="VLearn — the learning platform for the VinUni AI In Action programme">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#134D8B"/>
+      <stop offset="100%" stop-color="#0E3C6E"/>
+    </linearGradient>
+    <clipPath id="frame"><rect width="1200" height="260" rx="10"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1200" height="260" fill="url(#bg)"/>
+
+    <!-- decorative learning-day rail -->
+    <g opacity="0.16" fill="#FFFFFF">
+      <rect x="812" y="66" width="132" height="12" rx="6"/>
+      <rect x="812" y="98" width="196" height="12" rx="6"/>
+      <rect x="812" y="130" width="164" height="12" rx="6"/>
+      <rect x="812" y="162" width="212" height="12" rx="6"/>
+    </g>
+    <g opacity="0.5" fill="#C72127">
+      <circle cx="782" cy="72" r="7"/>
+      <circle cx="782" cy="104" r="7"/>
+    </g>
+    <g opacity="0.28" fill="#FFFFFF">
+      <circle cx="782" cy="136" r="7"/>
+      <circle cx="782" cy="168" r="7"/>
+    </g>
+    <rect x="779" y="72" width="6" height="96" opacity="0.22" fill="#FFFFFF"/>
+
+    <g opacity="0.07" fill="#FFFFFF">
+      <circle cx="1120" cy="42" r="150"/>
+    </g>
+
+    <!-- wordmark -->
+    <text x="72" y="126" font-family="Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif"
+          font-size="82" font-weight="700" letter-spacing="-2" fill="#FFFFFF">VLearn</text>
+    <rect x="74" y="150" width="96" height="7" rx="3.5" fill="#C72127"/>
+    <text x="74" y="196" font-family="Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif"
+          font-size="25" font-weight="400" fill="#CFDEED">The learning platform for the VinUni AI In Action programme</text>
+  </g>
+</svg>
