@@ -37,7 +37,6 @@ flowchart LR
   B["Browser<br/>student · instructor"] --> FE["vlearn-frontend<br/>Next.js · BFF proxy"]
   FE -- "/api/backend/*" --> BE["vlearn-backend<br/>FastAPI"]
   BE --> DB[("PostgreSQL")]
-  BE -. "hexagonal ports" .-> EXT["Bedrock · S3 · SES"]
   RP["Discord · web form"] --> BB["vlearn-bugbee"] --> BDB[("PostgreSQL")]
 
   classDef navy fill:#134D8B,stroke:#0E3C6E,color:#FFFFFF;
@@ -45,13 +44,14 @@ flowchart LR
   classDef plain fill:#F2F6F9,stroke:#8C959F,color:#2E2E2E;
   class FE,BE,DB navy;
   class BB red;
-  class B,EXT,RP,BDB plain;
+  class B,RP,BDB plain;
 ```
 
 The browser never talks to the API directly. Every authenticated call crosses the
 same-origin BFF proxy in the frontend, which keeps the session cookie boundary
-intact. Bug reports take their own path: they arrive through BugBee and never
-touch the learning database.
+intact; Bedrock, S3 and SES sit behind hexagonal ports with mock adapters for
+local development. Bug reports take their own path: they arrive through BugBee
+and never touch the learning database.
 
 Across all four repositories, `vlq` in **vlearn-quality** runs one quality gate
 with the same commands each repository's CI runs — and counts a skipped check as
