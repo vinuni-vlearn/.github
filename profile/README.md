@@ -38,23 +38,24 @@ flowchart LR
   FE -- "/api/backend/*" --> BE["vlearn-backend<br/>FastAPI"]
   BE --> DB[("PostgreSQL")]
   BE -. "hexagonal ports" .-> EXT["Bedrock · S3 · SES"]
-  RP["Discord · web form"] --> BB["vlearn-bugbee"]
-  BB --> BDB[("PostgreSQL")]
-  VQ["vlearn-quality — vlq"] -. "one gate over every repo" .-> FE
-  VQ -. " " .-> BE
-  VQ -. " " .-> BB
+  RP["Discord · web form"] --> BB["vlearn-bugbee"] --> BDB[("PostgreSQL")]
 
   classDef navy fill:#134D8B,stroke:#0E3C6E,color:#FFFFFF;
   classDef red fill:#C72127,stroke:#A31B20,color:#FFFFFF;
   classDef plain fill:#F2F6F9,stroke:#8C959F,color:#2E2E2E;
   class FE,BE,DB navy;
-  class BB,VQ red;
+  class BB red;
   class B,EXT,RP,BDB plain;
 ```
 
 The browser never talks to the API directly. Every authenticated call crosses the
 same-origin BFF proxy in the frontend, which keeps the session cookie boundary
-intact.
+intact. Bug reports take their own path: they arrive through BugBee and never
+touch the learning database.
+
+Across all four repositories, `vlq` in **vlearn-quality** runs one quality gate
+with the same commands each repository's CI runs — and counts a skipped check as
+a failure.
 
 <img src="https://raw.githubusercontent.com/vinuni-vlearn/.github/main/profile/assets/divider.svg" width="100%" alt="">
 
