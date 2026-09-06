@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: read
+      issues: read  # closingIssuesReferences cần quyền này; thiếu nó query trả về 0 mà không báo lỗi
     steps:
       - name: Hỏi GitHub xem liên kết có thật không
         env:
