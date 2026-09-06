@@ -65,6 +65,10 @@ jobs:
           GitHub nó chỉ là văn xuôi — và đó chính là cách board đã lặng lẽ ngừng
           cập nhật suốt một thời gian dài.
 
-          Nếu PR này thật sự không thuộc issue nào, gắn nhãn `no-issue`.
+          Nếu PR này thật sự không thuộc issue nào, gắn nhãn:
           EOF
+          # Tên nhãn nằm NGOÀI heredoc vì `<<'EOF'` cố ý không nở biến — đó là thứ
+          # khiến cả khối không có bề mặt injection. Ghi cứng "no-issue" vào trong
+          # thì một repo đặt `exempt_label` khác sẽ được chỉ tới một nhãn không có.
+          echo "      \`$EXEMPT\`" >&2
           exit 1
