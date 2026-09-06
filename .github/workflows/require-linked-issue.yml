@@ -1,0 +1,74 @@
+# Một PR không liên kết issue thì board không bao giờ biết việc đã xong.
+#
+# Kiểu hỏng này IM LẶNG: nó sống trọn nhiều tuần mà không ai thấy, vì mọi thứ
+# trông vẫn bình thường — PR merge, việc xong, chỉ có thẻ trên board là đứng yên.
+# Nên nó cần một cổng có răng, không phải một dòng trong tài liệu đóng góp.
+name: Linked issue
+
+on:
+  workflow_call:
+    inputs:
+      exempt_label:
+        description: "Nhãn cho phép PR bỏ qua cổng này."
+        type: string
+        default: no-issue
+
+jobs:
+  linked-issue:
+    name: PR phải liên kết một issue
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    steps:
+      - name: Hỏi GitHub xem liên kết có thật không
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+          PR: ${{ github.event.pull_request.number }}
+          EXEMPT: ${{ inputs.exempt_label }}
+          LABELS: ${{ toJSON(github.event.pull_request.labels.*.name) }}
+        run: |
+          set -euo pipefail
+
+          # Nhãn đọc từ payload, không gọi API: nó đã nằm sẵn trong sự kiện.
+          if printf '%s' "$LABELS" | jq -e --arg l "$EXEMPT" 'index($l)' >/dev/null; then
+            echo "::notice::Bỏ qua — PR mang nhãn \`$EXEMPT\`."
+            exit 0
+          fi
+
+          # Hỏi GitHub chứ KHÔNG đọc chữ trong mô tả PR. Chỉ GitHub mới biết một
+          # dòng chữ có thật sự tạo ra liên kết đóng hay không, và đó đúng là chỗ
+          # con người đọc nhầm: "Đóng #123" trông y như một lời hứa đóng issue.
+          COUNT=$(gh api graphql -f query='
+            query($owner:String!,$repo:String!,$pr:Int!){
+              repository(owner:$owner,name:$repo){
+                pullRequest(number:$pr){ closingIssuesReferences(first:20){ totalCount } }
+              }
+            }' -F owner="$OWNER" -F repo="$REPO" -F pr="$PR" \
+            --jq '.data.repository.pullRequest.closingIssuesReferences.totalCount')
+
+          if [ "$COUNT" -gt 0 ]; then
+            echo "PR liên kết $COUNT issue."
+            exit 0
+          fi
+
+          cat >&2 <<'EOF'
+          PR này không liên kết issue nào, nên board sẽ không tự cập nhật khi nó merge.
+
+          Thêm vào phần MÔ TẢ PR một dòng:
+
+              Closes #123
+
+          GitHub CHỈ hiểu từ khoá tiếng Anh — closes / fixes / resolves.
+          "Đóng #123" KHÔNG tính. Nó trông giống một lời hứa đóng issue, nhưng với
+          GitHub nó chỉ là văn xuôi — và đó chính là cách board đã lặng lẽ ngừng
+          cập nhật suốt một thời gian dài.
+
+          Nếu PR này thật sự không thuộc issue nào, gắn nhãn:
+          EOF
+          # Tên nhãn nằm NGOÀI heredoc vì `<<'EOF'` cố ý không nở biến — đó là thứ
+          # khiến cả khối không có bề mặt injection. Ghi cứng "no-issue" vào trong
+          # thì một repo đặt `exempt_label` khác sẽ được chỉ tới một nhãn không có.
+          echo "      \`$EXEMPT\`" >&2
+          exit 1
