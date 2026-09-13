@@ -16,7 +16,7 @@ on:
 jobs:
   linked-issue:
     name: PR phải liên kết một issue
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, light]
     permissions:
       pull-requests: read
       issues: read  # closingIssuesReferences cần quyền này; thiếu nó query trả về 0 mà không báo lỗi
